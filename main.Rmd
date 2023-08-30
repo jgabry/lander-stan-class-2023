@@ -479,7 +479,7 @@ ppc_intervals(
 
 Check the predicted mean number of complaints by building: 
 
-```{r fit_multi_NB-ppc_stat_grouped, fig.width=7, fig.height=6}
+```{r fit_simple_pois-ppc_stat_grouped, fig.width=7, fig.height=6}
 ppc_stat_grouped(
   y = standata_simple$complaints,
   yrep = y_rep,
@@ -1336,7 +1336,8 @@ fit_hier_NB_mos <-
     chains = 4,
     parallel_chains = 4,
     adapt_delta = 0.95, 
-    refresh = 200
+    refresh = 200, 
+    show_exceptions = FALSE
   )
 ```
 
@@ -1487,7 +1488,7 @@ fit_forecast <- comp_forecast$sample(
   parallel_chains = 4,
   adapt_delta = 0.95,
   refresh = 250,
-  show_messages = FALSE
+  show_exceptions = FALSE
 )
 ```
 
