@@ -10,11 +10,11 @@ data {
 parameters {
   real alpha;
   real beta;
-  real beta_super;
+  // add beta_super coefficient
 }
 transformed parameters {
   // create variable eta for the linear predictor
-  vector[N] eta = alpha + beta * traps + beta_super * live_in_super + log_sq_foot;
+
 }
 model {
   complaints ~ poisson_log(eta);
