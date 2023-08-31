@@ -1,6 +1,6 @@
 ---
 title: "Bayes and Stan Workshop"
-author: "Lander Analytics / IRS"
+author: "Lander Analytics"
 date: "September 2023"
 output:
   html_document:
