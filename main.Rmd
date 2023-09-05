@@ -307,7 +307,7 @@ ppd_stat(prior_preds, stat = "mean") +
 Plot the distribution of 90th percentiles: 
 
 ```{r prior-pred-plot-q90}
-pp_stat(prior_preds, stat = function(x) quantile(x, probs = 0.9)) + 
+ppd_stat(prior_preds, stat = function(x) quantile(x, probs = 0.9)) + 
   xlim(-1, 50) + 
   ggtitle("Prior predictive distribution of 90th percentile of complaints")
 ```
