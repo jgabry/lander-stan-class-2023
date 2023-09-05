@@ -11,6 +11,7 @@ parameters {
   real alpha;
   real beta;
   real beta_super;
+  real<lower=0> inv_phi;
   // declare inv_phi, which is constrained to be positive
   // (easier to think about prior on 1/phi than phi in this case)
 }
@@ -20,7 +21,9 @@ transformed parameters {
 }
 model {
   // change likelihood to neg_binomial_2_log
-  // add prior on inv_phi
+  complaints ~ neg_binomial_2_log(eta, phi);
+
+  inv_phi ~ normal(0, 1);
   alpha ~ normal(2, 1);
   beta ~ normal(-0.25, 0.5);
   beta_super ~ normal(-0.5, 1);
