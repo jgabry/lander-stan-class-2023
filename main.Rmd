@@ -18,6 +18,10 @@ knitr::opts_chunk$set(
   fig.align = "center",
   comment = NA
 )
+
+# override weird bug in formatting when printing summaries inside R markdown
+# (should be fixed soon by updates to posterior or rmarkdown packages)
+print.draws_summary <- function(x, ...) print(as.data.frame(x), ...)
 ```
 
 ```{r setup, results="hide", message=FALSE}
