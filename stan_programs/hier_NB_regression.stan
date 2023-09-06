@@ -25,7 +25,7 @@ transformed parameters {
 }
 model {
   complaints ~ neg_binomial_2_log(eta, phi);
-  alpha ~ normal(2, 1);
+  alpha ~ normal(2, 1);  // target += normal_lpdf(alpha | 2, 1)
   beta ~ normal(-0.25, 0.5);
   inv_phi ~ normal(0, 1);
 
