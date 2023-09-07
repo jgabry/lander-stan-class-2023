@@ -1966,7 +1966,7 @@ comp_hier_NB_gp <- cmdstan_model("stan_programs/hier_NB_regression_ncp_slopes_mo
 ```{r fit_hier_NB_gp, results="hold"}
 fit_hier_NB_gp <- comp_hier_NB_gp$sample(
   data = standata_hier_long,
-  refresh = 1000,
+  refresh = 250,
   chains = 4,
   parallel_chains = 4,
   adapt_delta = 0.9
