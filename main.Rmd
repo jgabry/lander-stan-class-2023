@@ -1492,8 +1492,10 @@ comp_forecast <- cmdstan_model("stan_programs/hier_NB_regression_ncp_slopes_mos_
 ```
 
 ```{r fit_forecast}
-# add number of months to predict to the data list
+# add number of months to predict and hypothetical numbers of traps to the data list
 standata_hier_long$M_forward <- 12
+standata_hier_long$hypo_traps <- 0:20
+standata_hier_long$N_hypo_traps <- length(standata_hier_long$hypo_traps)
 
 fit_forecast <- comp_forecast$sample(
   data = standata_hier_long,

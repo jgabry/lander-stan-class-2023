@@ -19,16 +19,12 @@ data {
   int<lower=1> M;
   array[N] int<lower=1,upper=M> mo_idx;
 
+  // for making forecasts for different hypothetical numbers of traps we could set
+  // included in standata_hier_long list
   int<lower=1> M_forward;
-  vector[J] log_sq_foot_pred;  // included in standata_hier_long list (it's same as log_sq_foot but just 1 unique value per building)
-}
-transformed data {
-  // We could pass this in as data from R but just wanted to demonstrate
-  // the transformed data block
-  // We'll make predictions for traps in {0,1,...,20}, but could go further
-  int N_hypo_traps = 21;
-  array[N_hypo_traps] int hypo_traps =
-    linspaced_int_array(N_hypo_traps, 0, N_hypo_traps - 1);
+  vector[J] log_sq_foot_pred;  // same as log_sq_foot but just 1 unique value per building
+  int<lower=0> N_hypo_traps;
+  array[N_hypo_traps] int hypo_traps;
 }
 parameters {
   real<lower=0> inv_phi;   // 1/phi (easier to think about prior for 1/phi instead of phi)
