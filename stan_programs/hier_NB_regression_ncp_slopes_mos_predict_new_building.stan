@@ -21,6 +21,8 @@ data {
 
   int<lower=1> M_forward;
   vector[J] log_sq_foot_pred;
+  int<lower=0> N_hypo_traps;
+  array[N_hypo_traps] int hypo_traps;
 
   int<lower=1> N_new_buildings;
   matrix[N_new_buildings, K] new_buildings_data;
