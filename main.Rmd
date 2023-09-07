@@ -1497,6 +1497,9 @@ standata_hier_long$M_forward <- 12
 standata_hier_long$hypo_traps <- 0:20
 standata_hier_long$N_hypo_traps <- length(standata_hier_long$hypo_traps)
 
+# we'll re-estimate the posterior because it's fast here
+# but you can just run generated quantities if you want (and use posterior from previous model)
+# https://mc-stan.org/cmdstanr/reference/model-method-generate-quantities.html
 fit_forecast <- comp_forecast$sample(
   data = standata_hier_long,
   chains = 4, 
