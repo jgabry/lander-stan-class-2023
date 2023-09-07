@@ -28,14 +28,6 @@ data {
   matrix[N_new_buildings, K] new_buildings_data;
   vector[N_new_buildings] log_sq_foot_pred_new_buildings;
 }
-transformed data {
-  // We could pass this in as data from R but just wanted to demonstrate
-  // the transformed data block
-  // We'll make predictions for traps in {0,1,...,20}, but could go further
-  int N_hypo_traps = 21;
-  array[N_hypo_traps] int hypo_traps =
-    linspaced_int_array(N_hypo_traps, 0, N_hypo_traps - 1);
-}
 parameters {
   real<lower=0> inv_phi;   // 1/phi (easier to think about prior for 1/phi instead of phi)
 
