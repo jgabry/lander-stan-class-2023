@@ -24,7 +24,7 @@ data {
   int<lower=1> M_forward;
   vector[J] log_sq_foot_pred;  // same as log_sq_foot but just 1 unique value per building
   int<lower=0> N_hypo_traps;
-  array[N_hypo_traps] int hypo_traps;
+  array[N_hypo_traps] int hypo_traps;  // how many traps will we set? 0, 1, 2, ..., 20
 }
 parameters {
   real<lower=0> inv_phi;   // 1/phi (easier to think about prior for 1/phi instead of phi)
@@ -76,6 +76,7 @@ model {
   sigma_mo ~ normal(0, 1);
   rho_raw ~ beta(10, 5);
 
+  // demonstrate computing eta in model block
   vector[N] eta = mu[building_idx] + kappa[building_idx] .* traps + mo[mo_idx] + log_sq_foot;
   complaints ~ neg_binomial_2_log(eta, phi);
 }
